@@ -39,18 +39,19 @@ const DailyRotateFile = (level: string, prefix: string) => {
     WinstonModule.forRootAsync({
       // options
       inject: [ConfigService],
-      useFactory: (config: ConfigService) =>
-        ({
+      useFactory: (config: ConfigService) => {
+        return {
           transports: [
             Console(),
-            ...(config.get(LogEnum.LOG_DAILY_FILE)
+            ...(config.get(LogEnum.LOG_DAILY_FILE) === 'true'
               ? [
                   DailyRotateFile('error', 'error'),
                   DailyRotateFile('warn', 'warn'),
                 ]
               : []),
           ],
-        } as WinstonModuleOptions),
+        } as WinstonModuleOptions;
+      },
     }),
   ],
 })
