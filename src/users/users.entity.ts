@@ -4,9 +4,11 @@ import {
   JoinTable,
   ManyToMany,
   OneToMany,
+  OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { LogsEntity } from '@/logs/logs.entity';
+import { LogsEntity } from '../logs/logs.entity';
+import { ProfileEntity } from '../profile/profile.entity';
 import { RolesEntity } from '@/roles/roles.entity';
 
 @Entity({ name: 'users' })
@@ -15,7 +17,7 @@ export class UsersEntity {
   id: number;
 
   @Column()
-  userName: string;
+  username: string;
 
   @Column()
   password: string;
@@ -26,4 +28,7 @@ export class UsersEntity {
   @ManyToMany(() => RolesEntity, (roles) => roles.users)
   @JoinTable({ name: 'users_roles' }) //将会在user和roles中间产生一个新表 必须选项 两边只要写一侧
   roles: RolesEntity[];
+
+  @OneToOne(() => ProfileEntity, (profile) => profile.user)
+  profile: ProfileEntity;
 }

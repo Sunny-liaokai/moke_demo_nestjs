@@ -14,7 +14,7 @@ export class ProfileEntity {
 
   @OneToOne(() => UsersEntity)
   @JoinColumn({ name: 'uid' })
-  userId: number;
+  user: UsersEntity;
 
   @Column()
   gender: number;
