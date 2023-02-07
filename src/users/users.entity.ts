@@ -9,7 +9,7 @@ import {
 } from 'typeorm';
 import { LogsEntity } from '../logs/logs.entity';
 import { ProfileEntity } from '../profile/profile.entity';
-import { RolesEntity } from '@/roles/roles.entity';
+import { RolesEntity } from '../roles/roles.entity';
 
 @Entity({ name: 'users' })
 export class UsersEntity {

@@ -5,7 +5,7 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { UsersEntity } from '@/users/users.entity';
+import { UsersEntity } from '../users/users.entity';
 
 
 @Entity({ name: 'logs' })

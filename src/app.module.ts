@@ -9,7 +9,7 @@ import { ProfileModule } from './profile/profile.module';
 import { UsersModule } from './users/users.module';
 
 import { LogsModule } from './logs/logs.module';
-import ormConfig from '../ormconfig';
+import { databaseParams } from '../ormconfig';
 
 //  读取启动命令中设置的环境
 const envFilePath = `.env.${process.env.NODE_ENV || `development`}`;
@@ -22,7 +22,7 @@ const envFilePath = `.env.${process.env.NODE_ENV || `development`}`;
       envFilePath, //自定义文件路径
       load: [() => dotenv.config({ path: '.env' })], // 读取.env的配置文件
     }),
-    TypeOrmModule.forRoot(ormConfig),
+    TypeOrmModule.forRoot(databaseParams),
     ProfileModule,
     UsersModule,
     LogsModule,
