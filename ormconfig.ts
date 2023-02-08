@@ -13,7 +13,6 @@ const entitiesDir =
 
 // 1.通过环境变量读取不同的.env文件
 
-
 function getEnvFile(evn: string) {
   if (fs.existsSync(evn)) {
     return dotEvn.parse(fs.readFileSync(evn));
